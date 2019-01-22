@@ -129,7 +129,7 @@ app.get( '**', function (req, res) {
 		res.status(400).end();
 		return;
 	});
-	res.sendFile(path.join(__dirname, 'dist/servidor/index.html'));
+	res.sendFile(path.join(__dirname, 'dist/remote/index.html'));
 	return;
 });
 
