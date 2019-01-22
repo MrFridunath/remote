@@ -1,0 +1,176 @@
+.header {
+	position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background: black;
+	color: white;
+	font-size: 40px;
+	user-select: none;
+}
+
+@media screen and (max-width: 490px) {
+	.header-title {
+		margin-left: 60px;
+		font-size: 30px;
+	}
+}
+
+.btn-exit {
+	position: absolute;
+	left: 20px;
+}
+
+.rfb-parent-container {
+    display: inline-block;
+	background-color: white;
+}
+.rfb-container {
+    display: inline-block;
+	overflow: hidden;
+}
+
+.horizontal-handler {
+    display: inline-block;
+	width: 25px;
+	cursor: e-resize;
+}
+
+.vertical-handler {
+    display: inline-block;
+    position: relative;
+	top: -6px;
+	height: 25px;
+	cursor: n-resize;
+}
+
+.keyboard-img-container {
+    display: inline-block;
+	position: relative;
+    top: -12px;
+	height: 25px;
+	width: 25px;
+    cursor: pointer;
+	border: 1px solid black;
+	background: #FF851B;
+    user-select: none;
+}
+
+.img-container {
+	height: 100%;
+	width: 100%;
+}
+
+.keyboard-container {
+	max-width: 1256px;
+	overflow: auto;
+    user-select: none;
+}
+
+.table th, .table td {
+	min-width: 50px;
+	padding: 0px;
+	padding-left: 5px;
+	padding-right: 5px;
+	vertical-align: middle;
+	border-top: 0px;
+}
+.key {
+	height: 55px;
+	border-radius: 10px;
+	box-shadow: 0.01px 5px 0.2px #262626,inset 0.1px 0.10px 1px white;
+	background: #1F1F1F;
+	cursor: pointer;
+	color: white;
+	text-align: center;
+	font-size: 16px;
+}
+
+.key:hover {
+	background: #2E2E2E;
+}
+.key:active {
+	background: #101010;	
+}
+
+.two-text-key {
+	font-size: 14px !important;
+}
+
+.three-text-key {
+	font-size: 10px !important;
+}
+
+.medium-width {
+	display: table-cell;
+}
+
+.small-width {
+	display: table-cell;
+}
+
+@media screen and (max-width: 1256px) and (min-width: 770px){
+    .keyboard-container {
+		max-width: 1116px;
+	}
+	.table th, .table td {
+		min-width: 45px;
+	}
+	.key {
+		height: 50px;
+		font-size: 14px;
+	}
+	.two-text-key {
+		font-size: 12px !important;
+	}
+}
+
+@media screen and (max-width: 769px) {
+    .keyboard-container {
+		max-width: 600px;
+	}
+	.table th, .table td {
+		min-width: 35px;
+	}
+	.key {
+		height: 40px;
+		font-size: 12px;
+	}
+	.two-text-key {
+		font-size: 10px !important;
+	}
+	.three-text-key {
+		font-size: 8px !important;
+	}
+	.shift-key {
+		right: 3px;
+	}
+}
+
+@media screen and (max-width: 1116px) {
+	.medium-width {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 770px) {
+	.small-width {
+		display: none;
+	}
+}
+
+.shift-key {
+	position: relative;
+	right: 7px;
+	bottom: 5px;
+}
+.altgr-key {
+	position: relative;
+	left: 6px;
+}
+
+.highlight-key {
+	color: blue;
+}

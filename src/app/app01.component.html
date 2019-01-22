@@ -1,0 +1,149 @@
+<header class="header">
+	<div class="header-title">REMOTE</div>
+</header>
+<div class="rfb-parent-container" [style.height.px]="rfb_container_height" [style.width.px]="rfb_container_width">
+  <div id="rfb-container" class="rfb-container" [style.visibility]="rfb_container_visibility" [style.height.px]="rfb_container_height" [style.width.px]="rfb_container_width"></div>
+</div>
+<div class="horizontal-handler" [style.background]="horizontal_handler_background" [style.height.px]="rfb_container_height" (mousedown)="onMouseDownX($event)"></div>
+<div>
+	<div class="vertical-handler" [style.background]="vertical_handler_background" [style.width.px]="rfb_container_width" (mousedown)="onMouseDownY($event)"></div>
+	<div class="keyboard-img-container" (click)="showKeyboard()">
+		<img class="img-container" src="/assets/app01/keyboard.svg">
+	</div>
+</div>
+<div class="keyboard-container" [style.display]="keyboard_display">
+	<table class="table">
+		<tr>
+			<td class="key" (click)="sendKey('Escape')">Esc</td>
+			<td></td>
+			<td class="key" (click)="sendKey('F1')">F1</td>
+			<td class="key" (click)="sendKey('F2')">F2</td>
+			<td class="key" (click)="sendKey('F3')">F3</td>
+			<td class="key" (click)="sendKey('F4')">F4</td>
+			<td class="key" (click)="sendKey('F5')">F5</td>
+			<td class="key" (click)="sendKey('F6')">F6</td>
+			<td></td>
+			<td class="key" (click)="sendKey('F7')">F7</td>
+			<td class="key" (click)="sendKey('F8')">F8</td>
+			<td class="key" (click)="sendKey('F9')">F9</td>
+			<td class="key" (click)="sendKey('F10')">F10</td>
+			<td class="key" (click)="sendKey('F11')">F11</td>
+			<td class="key" (click)="sendKey('F12')">F12</td>
+			<td class="small-width"></td>
+			<td class="key three-text-key small-width">Impr<br>Pant<br>PetSis</td>
+			<td class="key two-text-key small-width" (click)="sendKey('ScrollLock')">Bloq<br>Despl</td>
+			<td class="key two-text-key small-width" (click)="sendKey('Pause')">Pause<br>Inter</td>
+		</tr>
+		<tr>
+			<td class="key" (click)="sendKey('Backquote')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">ª</span><span>º</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">\</span></td>
+			<td class="key" (click)="sendKey('Digit1')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">!</span><span>1</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">|</span></td>
+			<td class="key" (click)="sendKey('Digit2')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">"</span><span>2</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">@</span></td>
+			<td class="key" (click)="sendKey('Digit3')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">·</span><span>3</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">#</span></td>
+			<td class="key" (click)="sendKey('Digit4')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">$</span><span>4</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">~</span></td>
+			<td class="key" (click)="sendKey('Digit5')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">%</span><span>5</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">€</span></td>
+			<td class="key" (click)="sendKey('Digit6')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">&</span><span>6</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">¬</span></td>
+			<td class="key" (click)="sendKey('Digit7')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">/</span><span>7</span></td>
+			<td class="key" (click)="sendKey('Digit8')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">(</span><span>8</span></td>
+			<td class="key" (click)="sendKey('Digit9')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">)</span><span>9</span></td>
+			<td class="key" (click)="sendKey('Digit0')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">=</span><span>0</span></td>
+			<td class="key" (click)="sendKey('Minus')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">?</span><span>'</span></td>
+			<td class="key" (click)="sendKey('Equal')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">¿</span><span>¡</span></td>
+			<td class="key" colspan=2 (click)="sendKey('Backspace')">Backspace</td>
+			<td class="small-width"></td>
+			<td class="key small-width" (click)="sendKey('Insert')">Insert</td>
+			<td class="key small-width" (click)="sendKey('Home')">Inicio</td>
+			<td class="key two-text-key small-width" (click)="sendKey('PageUp')">Re<br>Pág</td>
+			<td class="medium-width"></td>
+			<td class="key two-text-key medium-width" (click)="clickedBlqNumKey()"><span [ngClass]="blqnum_key ? 'highlight-key' : ''">Bloq<br>Num</span></td>
+			<td class="key medium-width" (click)="sendKey('NumpadDivide')">/</td>
+			<td class="key medium-width" (click)="sendKey('NumpadMultiply')">*</td>
+			<td class="key medium-width" (click)="sendKey('NumpadSubstract')">-</td>
+		</tr>
+		<tr>
+			<td class="key" colspan=2 (click)="sendKey('Tab')">TAB</td>
+			<td class="key" (click)="sendKey('KeyQ')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_q; else minus_key_q"></ng-template><ng-template #mayus_key_q><span>Q</span></ng-template><ng-template #minus_key_q><span>q</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyW')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_w; else minus_key_w"></ng-template><ng-template #mayus_key_w><span>W</span></ng-template><ng-template #minus_key_w><span>w</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyE')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_e; else minus_key_e"></ng-template><ng-template #mayus_key_e><span>E</span></ng-template><ng-template #minus_key_e><span>e</span></ng-template><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">€</span></td>
+			<td class="key" (click)="sendKey('KeyR')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_r; else minus_key_r"></ng-template><ng-template #mayus_key_r><span>R</span></ng-template><ng-template #minus_key_r><span>r</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyT')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_t; else minus_key_t"></ng-template><ng-template #mayus_key_t><span>T</span></ng-template><ng-template #minus_key_t><span>t</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyY')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_y; else minus_key_y"></ng-template><ng-template #mayus_key_y><span>Y</span></ng-template><ng-template #minus_key_y><span>y</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyU')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_u; else minus_key_u"></ng-template><ng-template #mayus_key_u><span>U</span></ng-template><ng-template #minus_key_u><span>u</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyI')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_i; else minus_key_i"></ng-template><ng-template #mayus_key_i><span>I</span></ng-template><ng-template #minus_key_i><span>i</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyO')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_o; else minus_key_o"></ng-template><ng-template #mayus_key_o><span>O</span></ng-template><ng-template #minus_key_o><span>o</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyP')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_p; else minus_key_p"></ng-template><ng-template #mayus_key_p><span>P</span></ng-template><ng-template #minus_key_p><span>p</span></ng-template></td>
+			<td class="key" (click)="sendKey('BracketLeft')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">^</span><span>`</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">[</span></td>
+			<td class="key" (click)="sendKey('BracketRight')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">*</span><span>+</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">]</span></td>
+			<td class="key" rowspan=2 (click)="sendKey('Enter')">ENTER</td>
+			<td class="small-width"></td>
+			<td class="key small-width" (click)="sendKey('Delete')">Supr</td>
+			<td class="key small-width" (click)="sendKey('End')">Fin</td>
+			<td class="key two-text-key small-width" (click)="sendKey('PageDown')">Av<br>Pág</td>
+			<td class="small-width"></td>
+			<td class="key medium-width" (click)="sendKey('Numpad7')"><ng-template *ngIf="blqnum_key; then numpad_7; else numpad_7_alt"></ng-template><ng-template #numpad_7><span>7</span></ng-template><ng-template #numpad_7_alt><span>Inicio</span></ng-template></td>
+			<td class="key medium-width" (click)="sendKey('Numpad8')"><ng-template *ngIf="blqnum_key; then numpad_8; else numpad_8_alt"></ng-template><ng-template #numpad_8><span>8</span></ng-template><ng-template #numpad_8_alt><span>UP</span></ng-template></td>
+			<td [ngClass]="blqnum_key ? 'key two-text-key medium-width' : 'key medium-width'" (click)="sendKey('Numpad9')"><ng-template *ngIf="blqnum_key; then numpad_9; else numpad_9_alt"></ng-template><ng-template #numpad_9><span>9</span></ng-template><ng-template #numpad_9_alt><span>Re<br>Pág</span></ng-template></td>
+			<td class="key medium-width" rowspan=2 (click)="sendKey('NumpadAdd')">+</td>
+		</tr>
+		<tr>
+			<td [ngClass]="mayus_key ? 'key two-text-key highlight-key' : 'key two-text-key'" colspan=2 (click)="clickedMayusKey()">Bloq<br>Mayús</td>
+			<td class="key" (click)="sendKey('KeyA')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_a; else minus_key_a"></ng-template><ng-template #mayus_key_a><span>A</span></ng-template><ng-template #minus_key_a><span>a</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyS')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_s; else minus_key_s"></ng-template><ng-template #mayus_key_s><span>S</span></ng-template><ng-template #minus_key_s><span>s</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyD')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_d; else minus_key_d"></ng-template><ng-template #mayus_key_d><span>D</span></ng-template><ng-template #minus_key_d><span>d</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyF')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_f; else minus_key_f"></ng-template><ng-template #mayus_key_f><span>F</span></ng-template><ng-template #minus_key_f><span>f</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyG')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_g; else minus_key_g"></ng-template><ng-template #mayus_key_g><span>G</span></ng-template><ng-template #minus_key_g><span>g</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyH')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_h; else minus_key_h"></ng-template><ng-template #mayus_key_h><span>H</span></ng-template><ng-template #minus_key_h><span>h</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyJ')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_j; else minus_key_j"></ng-template><ng-template #mayus_key_j><span>J</span></ng-template><ng-template #minus_key_j><span>j</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyK')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_k; else minus_key_k"></ng-template><ng-template #mayus_key_k><span>K</span></ng-template><ng-template #minus_key_k><span>k</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyL')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_l; else minus_key_l"></ng-template><ng-template #mayus_key_l><span>L</span></ng-template><ng-template #minus_key_l><span>l</span></ng-template></td>
+			<td class="key" (click)="sendKey('Semicolon')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_nn; else minus_key_nn"></ng-template><ng-template #mayus_key_nn><span>Ñ</span></ng-template><ng-template #minus_key_nn><span>ñ</span></ng-template></td>
+			<td class="key" (click)="sendKey('Quote')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">¨</span><span>´</span><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">}</span></td>
+			<td class="key" (click)="sendKey('Backslash')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_cc; else minus_key_cc"></ng-template><ng-template #mayus_key_cc><span>Ç</span></ng-template><ng-template #minus_key_cc><span>ç</span></ng-template><span [ngClass]="altgr_key && !shift_key ? 'altgr-key highlight-key' : 'altgr-key'">}</span></td>
+			<td class="small-width" colspan=4></td>
+			<td class="medium-width"></td>
+			<td class="key medium-width" (click)="sendKey('Numpad4')"><ng-template *ngIf="blqnum_key; then numpad_4; else numpad_4_alt"></ng-template><ng-template #numpad_4><span>4</span></ng-template><ng-template #numpad_4_alt><span>LEFT</span></ng-template></td>
+			<td class="key medium-width" (click)="sendKey('Numpad5')"><ng-template *ngIf="blqnum_key; then numpad_5; else numpad_5_alt"></ng-template><ng-template #numpad_5><span>5</span></ng-template><ng-template #numpad_5_alt><span>Clear</span></ng-template></td>
+			<td class="key medium-width" (click)="sendKey('Numpad6')"><ng-template *ngIf="blqnum_key; then numpad_6; else numpad_6_alt"></ng-template><ng-template #numpad_6><span>6</span></ng-template><ng-template #numpad_6_alt><span>RIGHT</span></ng-template></td>
+		</tr>
+		<tr>
+			<td [ngClass]="shift_key ? 'key highlight-key' : 'key'" colspan=2 (click)="clickedShiftKey()">SHIFT</td>
+			<td class="key" (click)="sendKey('IntlBackslash')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">></span><span><</span></td>
+			<td class="key" (click)="sendKey('KeyZ')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_z; else minus_key_z"></ng-template><ng-template #mayus_key_z><span>Z</span></ng-template><ng-template #minus_key_z><span>z</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyX')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_x; else minus_key_x"></ng-template><ng-template #mayus_key_x><span>X</span></ng-template><ng-template #minus_key_x><span>x</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyC')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_c; else minus_key_c"></ng-template><ng-template #mayus_key_c><span>C</span></ng-template><ng-template #minus_key_c><span>c</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyV')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_v; else minus_key_v"></ng-template><ng-template #mayus_key_v><span>V</span></ng-template><ng-template #minus_key_v><span>v</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyB')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_b; else minus_key_b"></ng-template><ng-template #mayus_key_b><span>B</span></ng-template><ng-template #minus_key_b><span>b</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyN')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_n; else minus_key_n"></ng-template><ng-template #mayus_key_n><span>N</span></ng-template><ng-template #minus_key_n><span>n</span></ng-template></td>
+			<td class="key" (click)="sendKey('KeyM')"><ng-template *ngIf="mayus_key || shift_key; then mayus_key_m; else minus_key_m"></ng-template><ng-template #mayus_key_m><span>M</span></ng-template><ng-template #minus_key_m><span>m</span></ng-template></td>
+			<td class="key" (click)="sendKey('Comma')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">;</span><span>,</span></td>
+			<td class="key" (click)="sendKey('Period')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">:</span><span>.</span></td>
+			<td class="key" (click)="sendKey('Slash')"><span [ngClass]="!altgr_key && shift_key ? 'shift-key highlight-key' : 'shift-key'">_</span><span>-</span></td>
+			<td [ngClass]="shift_key ? 'key highlight-key' : 'key'" colspan=2 (click)="clickedShiftKey()">SHIFT</td>
+			<td class="small-width"></td>
+			<td class="small-width"></td>
+			<td class="key small-width" (click)="sendKey('ArrowUp')">UP</td>
+			<td class="small-width"></td>
+			<td class="medium-width"></td>
+			<td class="key medium-width" (click)="sendKey('Numpad1')"><ng-template *ngIf="blqnum_key; then numpad_1; else numpad_1_alt"></ng-template><ng-template #numpad_1><span>1</span></ng-template><ng-template #numpad_1_alt><span>Fin</span></ng-template></td>
+			<td class="key medium-width" (click)="sendKey('Numpad2')"><ng-template *ngIf="blqnum_key; then numpad_2; else numpad_2_alt"></ng-template><ng-template #numpad_2><span>2</span></ng-template><ng-template #numpad_2_alt><span>DOWN</span></ng-template></td>
+			<td [ngClass]="blqnum_key ? 'key two-text-key medium-width' : 'key medium-width'" (click)="sendKey('Numpad3')"><ng-template *ngIf="blqnum_key; then numpad_3; else numpad_3_alt"></ng-template><ng-template #numpad_3><span>3</span></ng-template><ng-template #numpad_3_alt><span>Av<br>Pág</span></ng-template></td>
+			<td class="key medium-width" rowspan=2 (click)="sendKey('NumpadEnter')">INTRO</td>
+		</tr>
+		<tr>
+			<td [ngClass]="ctrl_key ? 'key highlight-key' : 'key'" (click)="clickedCtrlKey()">Ctrl</td>
+			<td class="key" (click)="sendKey('OSLeft')">OS</td>
+			<td [ngClass]="alt_key ? 'key highlight-key' : 'key'" (click)="clickedAltKey()">Alt</td>
+			<td class="key" colspan=8 (click)="sendKey('Space')">Space</td>
+			<td [ngClass]="altgr_key ? 'key highlight-key' : 'key'" (click)="clickedAltGrKey()">AltGr</td>
+			<td class="key" (click)="sendKey('OSRight')">OS</td>
+			<td class="key" (click)="sendKey('ContextMenu')">Context</td>
+			<td [ngClass]="ctrl_key ? 'key highlight-key' : 'key'" (click)="clickedCtrlKey()">Ctrl</td>
+			<td class="small-width"></td>
+			<td class="key small-width" (click)="sendKey('ArrowLeft')">LEFT</td>
+			<td class="key small-width" (click)="sendKey('ArrowDown')">DOWN</td>
+			<td class="key small-width" (click)="sendKey('ArrowRight')">RIGHT</td>
+			<td class="medium-width"></td>
+			<td class="key medium-width" colspan=2 (click)="sendKey('Numpad0')"><ng-template *ngIf="blqnum_key; then numpad_0; else numpad_0_alt"></ng-template><ng-template #numpad_0><span>0</span></ng-template><ng-template #numpad_0_alt><span>Insert</span></ng-template></td>
+			<td class="key medium-width" (click)="sendKey('NumpadDecimal')"><ng-template *ngIf="blqnum_key; then numpad_dot; else numpad_dot_alt"></ng-template><ng-template #numpad_dot><span>.</span></ng-template><ng-template #numpad_dot_alt><span>Supr</span></ng-template></td>
+		</tr>
+	</table>
+</div>
